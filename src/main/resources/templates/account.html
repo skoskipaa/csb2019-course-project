@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8" />
+        <title>My supersecure account</title>
+         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"/>
+    </head>
+    <body>
+        <main class="container">
+        <p><span>Logged in as </span><span th:text="${account.username}">name</span></p>
+
+        <div>
+            <h2>Your event sign-up information:</h2>
+            <h4>Name:</h4>
+            <p th:text="${info.name}">Name</p>
+            <h4>Address</h4>
+            <p th:text="${info.address}">Address</p>
+        </div>
+        <form th:action="@{/logout}" method="POST">
+            <div class="form-group">
+                <button type="submit" class="btn btn-primary">Logout</button>
+            </div>
+        </form>
+        <form th:action="@{/account/{id}(id=${account.id})}" th:method="DELETE">
+            <div class="form-group">
+            <button type="submit" class="btn btn-danger">Cancel sign-up</button>
+            </div>
+        </form>
+        </main>
+    </body>
+</html>
+

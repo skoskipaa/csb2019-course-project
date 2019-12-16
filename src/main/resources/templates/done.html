@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8" />
+        <title>Welcome</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"/>
+    </head>
+    <body>
+        <main class="container">
+        <p><span>Logged in as </span><span th:text="${account.username}">name</span></p>
+        <h2>You have signed up to the event!</h2>
+        <h4>People who have signed up so far...:</h4>
+        <table>
+            <thead>
+                <tr>
+                    <th>Name</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="item : ${list}">
+                    <td th:utext="${item.name}">name</td>
+                </tr>
+            </tbody>
+        </table>
+        <h4>See your sign-up info to cancel:</h4>
+        <a th:href="@{/account/{id}(id=${account.id})}">My sign-up</a>
+        </main>
+    </body>
+</html>
