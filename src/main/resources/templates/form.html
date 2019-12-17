@@ -8,23 +8,32 @@
     </head>
     <body>
         <main class="container">
-        <h3>Sign up to the event using this form</h3>
+            <p><span>Logged in as </span><span th:text="${account.username}">name</span></p>
 
-        <form action="#" th:action="@{/form}" method="POST">
-            <div class="form-group">
-                <p><label for="name">Name</label>: <input type="text" class="form-control" name="name" id="name"/></p>
-            </div>
-            <div class="form-group">
-                <p><label for="address">Address</label>: <input type="text" class="form-control" name="address" id="address"/></p>
-            <button type="submit" class="btn btn-primary">Submit</button>
-            </div>
-        </form>
-        
-        <form th:action="@{/logout}" method="POST">
-            <div class="form-group">
-            <button type="submit" class="btn btn-primary">Logout</button>
-            </div>
-        </form>
+            <h3>Sign up to the event using this form</h3>
+            <p>A credit card is needed for confirmation. Your card will not be charged at this point...</p>
+
+            <form action="#" th:action="@{/form}" method="POST">
+                <div class="form-group">
+                    <p><label for="name">Name</label>: <input type="text" class="form-control" name="name" id="name"/></p>
+                </div>
+                <div class="form-group">
+                    <p><label for="creditCard">Credit Card number: </label><input type="text" class="form-control" name="creditCard" id="creditCard"/></p>
+                </div>
+                <div class="form-group">
+                    <p><label for="address">Address</label>: <input type="text" class="form-control" name="address" id="address"/></p>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </div>
+            </form>
+
+            <form th:action="@{/logout}" method="POST">
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary">Logout</button>
+                </div>
+            </form>
+            <h6>Your information:</h6>
+            <a th:href="@{/account/{id}(id=${account.id})}">My sign-up info...</a>
+
         </main>
     </body>
 </html>

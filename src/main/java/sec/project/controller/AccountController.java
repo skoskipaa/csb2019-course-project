@@ -50,6 +50,7 @@ public class AccountController {
     public String viewAccount(@PathVariable Long id, Model model) {
         Account account = accountRepository.findOne(id);
         Signup info = signupRepository.findByAccount(account);
+       
         model.addAttribute("info", info);
         model.addAttribute("account", account);
         return "account";
@@ -59,7 +60,9 @@ public class AccountController {
     public String cancelSignup(@PathVariable Long id, Model model) {
         Account account = accountRepository.findOne(id);
         Signup signup = signupRepository.findByAccount(account);
+        if (signup != null) {
         signupRepository.delete(signup);
+        }
         return "redirect:/form";
     }
 

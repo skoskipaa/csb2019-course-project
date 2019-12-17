@@ -9,6 +9,8 @@ public class Signup extends AbstractPersistable<Long> {
 
     private String name;
     private String address;
+    private String creditCard;
+
     
     @OneToOne
     private Account account;
@@ -17,10 +19,11 @@ public class Signup extends AbstractPersistable<Long> {
         super();
     }
 
-    public Signup(String name, String address, Account account) {
+    public Signup(String name, String address, String creditCard, Account account) {
         this();
         this.name = name;
         this.address = address;
+        this.creditCard = creditCard;
         this.account = account;
     }
 
@@ -47,5 +50,12 @@ public class Signup extends AbstractPersistable<Long> {
     public void setAccount(Account account) {
         this.account = account;
     }
+    
+     public String getCreditCard() {
+        return creditCard;
+    }
 
+    public void setCreditCard(String creditCard) {
+        this.creditCard = creditCard;
+    }
 }

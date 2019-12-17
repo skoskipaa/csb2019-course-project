@@ -36,6 +36,7 @@ public class SignupController {
     public String loadForm(Model model, Authentication auth) {
         Account acc = accountRepository.findByUsername(auth.getName());
         Signup signup = signupRepository.findByAccount(acc);
+        
         if (signup != null) {
             return "redirect:/done";
         }
@@ -45,9 +46,10 @@ public class SignupController {
     }
 
     @RequestMapping(value = "/form", method = RequestMethod.POST)
-    public String submitForm(@RequestParam String name, @RequestParam String address, Authentication auth) {
+    public String submitForm(@RequestParam String name, @RequestParam String address,
+            @RequestParam String creditCard, Authentication auth) {
         Account acc = accountRepository.findByUsername(auth.getName());
-        signupRepository.save(new Signup(name, address, acc));
+        signupRepository.save(new Signup(name, address, creditCard, acc));
         return "redirect:/done";
     }
 

@@ -8,23 +8,29 @@
     </head>
     <body>
         <main class="container">
-        <p><span>Logged in as </span><span th:text="${account.username}">name</span></p>
-        <h2>You have signed up to the event!</h2>
-        <h4>People who have signed up so far...:</h4>
-        <table>
-            <thead>
-                <tr>
-                    <th>Name</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr th:each="item : ${list}">
-                    <td th:utext="${item.name}">name</td>
-                </tr>
-            </tbody>
-        </table>
-        <h4>See your sign-up info to cancel:</h4>
-        <a th:href="@{/account/{id}(id=${account.id})}">My sign-up</a>
+            <p><span>Logged in as </span><span th:text="${account.username}">name</span></p>
+            <h4>People who have signed up so far...:</h4>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="item : ${list}">
+                        <td th:utext="${item.name}">name</td>
+                    </tr>
+                </tbody>
+            </table>
+            <br></br>
+
+            <a th:href="@{/account/{id}(id=${account.id})}">My sign-up info...</a>
+            <br></br>
+            <form th:action="@{/logout}" method="POST">
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary">Logout</button>
+                </div>
+            </form>
         </main>
     </body>
 </html>
